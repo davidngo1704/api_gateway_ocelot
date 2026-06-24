@@ -1,17 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-
+using System.IO;
 namespace ApiGateway.Controllers.All
 {
     [ApiController]
     [Route("api/all")]
     public class ApiController : ControllerBase
     {
-        [HttpGet]
-        public async Task<IActionResult> GetAllData()
+        public string File(string path)
         {
-            // Implementation for retrieving all data
-            return Ok(new { message = "All data endpoint" });
+            var result = System.IO.File.ReadAllText(path);
+
+
+            return result;
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllData(string input)
+        {
+            var data = File("C://database/data.json");
+
+            data = data + (input.Replace("dai", ""));
+
+            return Ok(data);
         }
     }
 }
