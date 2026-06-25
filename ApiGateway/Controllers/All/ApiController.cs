@@ -23,13 +23,19 @@ namespace ApiGateway.Controllers.All
         public object Parse(string input)
         {
             var result = JsonSerializer.Deserialize<object>(input);
-            return result.ToString()
+            var data = result.ToString()
                 .Replace("{", "")
                 .Replace("}", "")
                 .Replace("\"", "")
                 .Replace("'", "")
                 .Replace(":", "");
 
+            return BusinessLogic(data);
+        }
+        public string BusinessLogic(string input)
+        {
+            var data =input + "Dep trai";
+            return data;
         }
     }
 }
