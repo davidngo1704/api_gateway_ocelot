@@ -16,7 +16,7 @@ namespace ApiGateway.Controllers.All
         [HttpGet]
         public async Task<IActionResult> GetAllData(string input)
         {
-            var data = File("C://database/data.json");
+            var data = File("E://database/data.json");
             data = data + (input.Replace("dai", ""));
             return Ok(Parse(data));
         }
