@@ -34,8 +34,13 @@ namespace ApiGateway.Controllers.All
         }
         public string BusinessLogic(string input)
         {
-            var data =input + "Dep trai";
+            var data =input + TreeView(input);
             return data;
         }
+        public string TreeView(string input)
+        {
+            var data = input.Replace("Dep trai", "");
+            return data;
+        }  
     }
 }
